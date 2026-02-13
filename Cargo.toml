@@ -3,12 +3,12 @@ members = ["regalloc2-tool"]
 
 [workspace.package]
 edition = "2024"
-rust-version = "1.93.0"
+rust-version = "1.93"
 license = "Apache-2.0 WITH LLVM-exception"
 repository = "https://github.com/bytecodealliance/regalloc2"
 
 [workspace.dependencies]
-regalloc2 = { path = "." }
+regalloc2 = { version = "0.13.5", path = "." }
 log = { version = "0.4.29", default-features = false }
 smallvec = { version = "1.15.1", features = ["union"] }
 rustc-hash = { version = "2.1.1", default-features = false }

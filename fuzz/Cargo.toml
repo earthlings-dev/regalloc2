@@ -5,13 +5,13 @@ authors = ["Chris Fallin <chris@cfallin.org>"]
 license = "MPL-2.0 AND Apache-2.0 WITH LLVM-exception"
 publish = false
 edition = "2024"
-rust-version = "1.93.0"
+rust-version = "1.93"
 
 [package.metadata]
 cargo-fuzz = true
 
 [dependencies]
-regalloc2 = { path = "../", features = ["fuzzing"] }
+regalloc2 = { version = "0.13.5", path = "../", features = ["fuzzing"] }
 log = { version = "0.4.29", default-features = false }
 env_logger = "0.11.9"
 libfuzzer-sys = "0.4.12"
