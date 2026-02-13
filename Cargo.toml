@@ -16,9 +16,9 @@ hashbrown = { version = "0.16", default-features = false }
 serde = { version = "1.0.228", default-features = false, features = ["derive", "alloc"] }
 arbitrary = { version = "1.4.2" }
 arbtest = { version = "0.3.2" }
-bumpalo = { version = "3.19.1", path = "../bumpalo", features = ["allocator-api2"] }
+bumpalo = { version = "3.19.1", git = "https://github.com/earthlings-dev/bumpalo.git", features = ["allocator-api2"] }
 allocator-api2 = { version = "0.4.0", default-features = false, features = ["alloc"] }
-bincode = { version = "3.0.0", path = "../bincode" }
+bincode = { version = "3.0.0", git = "https://github.com/earthlings-dev/bincode.git" }
 clap = { version = "4.5.58", features = ["derive"] }
 pretty_env_logger = { version = "0.5.0" }
 
