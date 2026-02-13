@@ -62,9 +62,7 @@ impl Lru {
     pub fn poke(&mut self, preg: PReg) {
         trace!(
             "Before poking: {:?} LRU. head: {:?}, Actual data: {:?}",
-            self.regclass,
-            self.head,
-            self.data
+            self.regclass, self.head, self.data
         );
         trace!("About to poke {:?} in {:?} LRU", preg, self.regclass);
         let prev_newest = self.head;
@@ -87,9 +85,7 @@ impl Lru {
     pub fn pop(&mut self) -> PReg {
         trace!(
             "Before popping: {:?} LRU. head: {:?}, Actual data: {:?}",
-            self.regclass,
-            self.head,
-            self.data
+            self.regclass, self.head, self.data
         );
         trace!("Popping {:?} LRU", self.regclass);
         if self.is_empty() {
@@ -133,9 +129,7 @@ impl Lru {
     fn remove(&mut self, hw_enc: usize) {
         trace!(
             "Before removing: {:?} LRU. head: {:?}, Actual data: {:?}",
-            self.regclass,
-            self.head,
-            self.data
+            self.regclass, self.head, self.data
         );
         trace!("Removing p{hw_enc} from {:?} LRU", self.regclass);
         let (iprev, inext) = (
@@ -164,9 +158,7 @@ impl Lru {
     fn insert_before(&mut self, i: u8, j: u8) {
         trace!(
             "Before inserting: {:?} LRU. head: {:?}, Actual data: {:?}",
-            self.regclass,
-            self.head,
-            self.data
+            self.regclass, self.head, self.data
         );
         trace!("Inserting p{i} before {j} in {:?} LRU", self.regclass);
         let prev = self.data[j as usize].prev;
@@ -187,9 +179,7 @@ impl Lru {
     fn validate_lru(&self) {
         trace!(
             "{:?} LRU. head: {:?}, Actual data: {:?}",
-            self.regclass,
-            self.head,
-            self.data
+            self.regclass, self.head, self.data
         );
         if self.head != u8::MAX {
             let mut node = self.data[self.head as usize].next;

@@ -4,16 +4,17 @@ version = "0.0.0"
 authors = ["Chris Fallin <chris@cfallin.org>"]
 license = "MPL-2.0 AND Apache-2.0 WITH LLVM-exception"
 publish = false
-edition = "2018"
+edition = "2024"
+rust-version = "1.93.0"
 
 [package.metadata]
 cargo-fuzz = true
 
 [dependencies]
 regalloc2 = { path = "../", features = ["fuzzing"] }
-log = { version = "0.4.8", default-features = false }
-env_logger = "0.8.3"
-libfuzzer-sys = "0.4.2"
+log = { version = "0.4.29", default-features = false }
+env_logger = "0.11.9"
+libfuzzer-sys = "0.4.12"
 
 # Prevent this from interfering with workspaces
 [workspace]

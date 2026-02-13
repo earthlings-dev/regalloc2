@@ -2,8 +2,8 @@ use std::path::PathBuf;
 
 use clap::Parser;
 use regalloc2::{
-    checker::Checker, serialize::SerializableFunction, Algorithm, Block, Edit, Function,
-    InstOrEdit, Output, RegallocOptions,
+    Algorithm, Block, Edit, Function, InstOrEdit, Output, RegallocOptions, checker::Checker,
+    serialize::SerializableFunction,
 };
 
 #[derive(Parser)]

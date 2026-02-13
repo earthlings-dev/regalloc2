@@ -120,8 +120,7 @@ impl<'a, F: Function> Env<'a, F> {
                 // Overlap -- cannot merge.
                 trace!(
                     " -> overlap between {:?} and {:?}, exiting",
-                    ranges_from[idx_from].index,
-                    ranges_to[idx_to].index
+                    ranges_from[idx_from].index, ranges_to[idx_to].index
                 );
                 return false;
             }
@@ -181,8 +180,7 @@ impl<'a, F: Function> Env<'a, F> {
 
         trace!(
             "merging: ranges_from = {:?} ranges_to = {:?}",
-            ranges_from,
-            ranges_to
+            ranges_from, ranges_to
         );
 
         let empty_vec = LiveRangeList::new_in(self.ctx.bump());
@@ -349,8 +347,7 @@ impl<'a, F: Function> Env<'a, F> {
 
                     trace!(
                         "trying to merge reused-input def: src {} to dst {}",
-                        src_vreg,
-                        dst_vreg
+                        src_vreg, dst_vreg
                     );
                     let src_bundle = self.ranges[self.vregs[src_vreg].ranges[0].index].bundle;
                     debug_assert!(src_bundle.is_valid());

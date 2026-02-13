@@ -13,13 +13,13 @@
 //! Data structures for backtracking allocator.
 
 use super::liveranges::SpillWeight;
+use crate::Vec2;
 use crate::cfg::{CFGInfo, CFGInfoCtx};
 use crate::index::ContainerComparator;
 use crate::indexset::IndexSet;
-use crate::Vec2;
 use crate::{
-    define_index, Allocation, Block, Bump, Edit, Function, FxHashMap, FxHashSet, MachineEnv,
-    Operand, Output, PReg, ProgPoint, RegClass, VReg,
+    Allocation, Block, Bump, Edit, Function, FxHashMap, FxHashSet, MachineEnv, Operand, Output,
+    PReg, ProgPoint, RegClass, VReg, define_index,
 };
 use alloc::collections::BTreeMap;
 use alloc::collections::VecDeque;
@@ -728,11 +728,7 @@ impl InsertedMoves {
     ) {
         trace!(
             "insert_move: pos {:?} prio {:?} from_alloc {:?} to_alloc {:?} to_vreg {:?}",
-            pos,
-            prio,
-            from_alloc,
-            to_alloc,
-            to_vreg
+            pos, prio, from_alloc, to_alloc, to_vreg
         );
         if from_alloc == to_alloc {
             trace!(" -> skipping move with same source and  dest");

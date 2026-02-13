@@ -1760,7 +1760,9 @@ unsafe impl allocator_api2::alloc::Allocator for Bump {
     }
 
     unsafe fn deallocate(&self, ptr: core::ptr::NonNull<u8>, layout: core::alloc::Layout) {
-        self.0.deref().deallocate(ptr, layout);
+        unsafe {
+            self.0.deref().deallocate(ptr, layout);
+        }
     }
 
     fn allocate_zeroed(
@@ -1776,7 +1778,7 @@ unsafe impl allocator_api2::alloc::Allocator for Bump {
         old_layout: core::alloc::Layout,
         new_layout: core::alloc::Layout,
     ) -> Result<core::ptr::NonNull<[u8]>, allocator_api2::alloc::AllocError> {
-        self.0.deref().grow(ptr, old_layout, new_layout)
+        unsafe { self.0.deref().grow(ptr, old_layout, new_layout) }
     }
 
     unsafe fn grow_zeroed(
@@ -1785,7 +1787,7 @@ unsafe impl allocator_api2::alloc::Allocator for Bump {
         old_layout: core::alloc::Layout,
         new_layout: core::alloc::Layout,
     ) -> Result<core::ptr::NonNull<[u8]>, allocator_api2::alloc::AllocError> {
-        self.0.deref().grow_zeroed(ptr, old_layout, new_layout)
+        unsafe { self.0.deref().grow_zeroed(ptr, old_layout, new_layout) }
     }
 
     unsafe fn shrink(
@@ -1794,7 +1796,7 @@ unsafe impl allocator_api2::alloc::Allocator for Bump {
         old_layout: core::alloc::Layout,
         new_layout: core::alloc::Layout,
     ) -> Result<core::ptr::NonNull<[u8]>, allocator_api2::alloc::AllocError> {
-        self.0.deref().shrink(ptr, old_layout, new_layout)
+        unsafe { self.0.deref().shrink(ptr, old_layout, new_layout) }
     }
 }
 

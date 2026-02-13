@@ -7,8 +7,8 @@
 
 use crate::alloc::vec::Vec;
 
-use crate::{domtree, postorder, Block, Function, Inst, ProgPoint, RegAllocError, VecExt};
-use smallvec::{smallvec, SmallVec};
+use crate::{Block, Function, Inst, ProgPoint, RegAllocError, VecExt, domtree, postorder};
+use smallvec::{SmallVec, smallvec};
 
 #[derive(Debug, Default)]
 pub struct CFGInfoCtx {

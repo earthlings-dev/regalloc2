@@ -1,6 +1,27 @@
 [workspace]
 members = ["regalloc2-tool"]
 
+[workspace.package]
+edition = "2024"
+rust-version = "1.93.0"
+license = "Apache-2.0 WITH LLVM-exception"
+repository = "https://github.com/bytecodealliance/regalloc2"
+
+[workspace.dependencies]
+regalloc2 = { path = "." }
+log = { version = "0.4.29", default-features = false }
+smallvec = { version = "1.15.1", features = ["union"] }
+rustc-hash = { version = "2.1.1", default-features = false }
+hashbrown = { version = "0.16", default-features = false }
+serde = { version = "1.0.228", default-features = false, features = ["derive", "alloc"] }
+arbitrary = { version = "1.4.2" }
+arbtest = { version = "0.3.2" }
+bumpalo = { version = "3.19.1", path = "../bumpalo", features = ["allocator-api2"] }
+allocator-api2 = { version = "0.4.0", default-features = false, features = ["alloc"] }
+bincode = { version = "3.0.0", path = "../bincode" }
+clap = { version = "4.5.58", features = ["derive"] }
+pretty_env_logger = { version = "0.5.0" }
+
 [package]
 name = "regalloc2"
 version = "0.13.5"
@@ -8,28 +29,26 @@ authors = [
     "Chris Fallin <chris@cfallin.org>",
     "Mozilla SpiderMonkey Developers",
 ]
-edition = "2018"
-license = "Apache-2.0 WITH LLVM-exception"
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
 description = "Backtracking register allocator inspired from IonMonkey"
-repository = "https://github.com/bytecodealliance/regalloc2"
+repository.workspace = true
 
 [dependencies]
-log = { version = "0.4.8", default-features = false }
-smallvec = { version = "1.6.1", features = ["union"] }
-rustc-hash = { version = "2.0.0", default-features = false }
-hashbrown = { version = "0.15", default-features = false, features = [] }
+log = { workspace = true }
+smallvec = { workspace = true }
+rustc-hash = { workspace = true }
+hashbrown = { workspace = true }
 
 # Optional serde support, enabled by feature below.
-serde = { version = "1.0.136", features = [
-    "derive",
-    "alloc",
-], default-features = false, optional = true }
+serde = { workspace = true, optional = true }
 
 # The below are only needed for fuzzing.
-arbitrary = { version = "1.4.2", optional = true }
-arbtest = { version = "0.3.2", optional = true }
-bumpalo = { version = "3.16.0", features = ["allocator-api2"] }
-allocator-api2 = { version = "0.2.18", default-features = false, features = ["alloc"] }
+arbitrary = { workspace = true, optional = true }
+arbtest = { workspace = true, optional = true }
+bumpalo = { workspace = true }
+allocator-api2 = { workspace = true }
 
 # When testing regalloc2 by itself, enable debug assertions and overflow checks.
 [profile.release]

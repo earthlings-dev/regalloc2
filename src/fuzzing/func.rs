@@ -4,8 +4,8 @@
  */
 
 use crate::{
-    domtree, postorder, Allocation, Block, Function, Inst, InstRange, MachineEnv, Operand,
-    OperandConstraint, OperandKind, OperandPos, PReg, PRegSet, RegClass, VReg,
+    Allocation, Block, Function, Inst, InstRange, MachineEnv, Operand, OperandConstraint,
+    OperandKind, OperandPos, PReg, PRegSet, RegClass, VReg, domtree, postorder,
 };
 
 use alloc::vec::Vec;

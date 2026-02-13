@@ -1,7 +1,7 @@
 //! Redundant-move elimination.
 
 use crate::{Allocation, FxHashMap, VReg};
-use smallvec::{smallvec, SmallVec};
+use smallvec::{SmallVec, smallvec};
 
 #[derive(Copy, Clone, Debug, PartialEq, Eq)]
 pub enum RedundantMoveState {
@@ -40,14 +40,11 @@ impl RedundantMoveEliminator {
 
         trace!(
             "     -> redundant move tracker: from {} to {} to_vreg {:?}",
-            from,
-            to,
-            to_vreg
+            from, to, to_vreg
         );
         trace!(
             "       -> from_state {:?} to_state {:?}",
-            from_state,
-            to_state
+            from_state, to_state
         );
 
         if from == to && to_vreg.is_some() {

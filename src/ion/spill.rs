@@ -58,8 +58,7 @@ impl<'a, F: Function> Env<'a, F> {
             if !success {
                 trace!(
                     "spilling bundle {:?}: marking spillset {:?} as required",
-                    bundle,
-                    self.ctx.bundles[bundle].spillset
+                    bundle, self.ctx.bundles[bundle].spillset
                 );
                 self.ctx.spillsets[self.ctx.bundles[bundle].spillset].required = true;
             }

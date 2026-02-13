@@ -13,9 +13,7 @@ impl<'a, F: Function> Env<'a, F> {
         for (i, b) in self.bundles.iter().enumerate() {
             trace!(
                 "bundle{}: spillset={:?} alloc={:?}",
-                i,
-                b.spillset,
-                b.allocation
+                i, b.spillset, b.allocation
             );
             for entry in &b.ranges {
                 trace!(

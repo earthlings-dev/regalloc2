@@ -1,8 +1,8 @@
 use crate::OperandConstraint::{self, *};
 use crate::OperandKind::{self, *};
 use crate::{
-    run, Algorithm, Allocation, Block, Function, Inst, InstRange, MachineEnv, Operand, OperandPos,
-    PReg, PRegSet, ProgPoint, RegClass, RegallocOptions, VReg,
+    Algorithm, Allocation, Block, Function, Inst, InstRange, MachineEnv, Operand, OperandPos, PReg,
+    PRegSet, ProgPoint, RegClass, RegallocOptions, VReg, run,
 };
 use alloc::vec;
 use alloc::vec::Vec;

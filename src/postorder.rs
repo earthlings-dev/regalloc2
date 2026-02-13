@@ -7,7 +7,7 @@
 
 use crate::{Block, RegAllocError, VecExt};
 use alloc::vec::Vec;
-use smallvec::{smallvec, SmallVec};
+use smallvec::{SmallVec, smallvec};
 
 pub fn calculate<'a, SuccFn: Fn(Block) -> &'a [Block]>(
     num_blocks: usize,

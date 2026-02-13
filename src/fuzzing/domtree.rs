@@ -1,6 +1,6 @@
 //! Fuzz the dominator-tree calculation.
 
-use crate::{domtree, postorder, Block};
+use crate::{Block, domtree, postorder};
 use arbitrary::{Arbitrary, Result, Unstructured};
 use std::collections::HashSet;
 use std::{vec, vec::Vec};

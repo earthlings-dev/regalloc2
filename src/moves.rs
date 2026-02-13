@@ -3,9 +3,9 @@
  * exception. See `LICENSE` for details.
  */
 
-use crate::{ion::data_structures::u64_key, Allocation, PReg};
+use crate::{Allocation, PReg, ion::data_structures::u64_key};
 use core::fmt::Debug;
-use smallvec::{smallvec, SmallVec};
+use smallvec::{SmallVec, smallvec};
 
 /// A list of moves to be performed in sequence, with auxiliary data
 /// attached to each.
@@ -364,8 +364,7 @@ where
             let save = (self.get_stackslot)();
             trace!(
                 "scratch resolver: stack-to-stack borrowing {:?} with save stackslot {:?}",
-                reg,
-                save
+                reg, save
             );
             (reg, Some(save))
         };

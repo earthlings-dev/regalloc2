@@ -1,7 +1,7 @@
 use core::fmt;
 
-use crate::ion::data_structures::VRegIndex;
 use crate::VReg;
+use crate::ion::data_structures::VRegIndex;
 use alloc::vec;
 use alloc::vec::Vec;
 

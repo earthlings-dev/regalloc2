@@ -19,8 +19,8 @@ use super::{
     RedundantMoveEliminator, VRegIndex,
 };
 use crate::ion::data_structures::{
-    u64_key, BlockparamIn, BlockparamOut, CodeRange, Edits, FixedRegFixupLevel, LiveRangeKey,
-    LiveRangeListEntry,
+    BlockparamIn, BlockparamOut, CodeRange, Edits, FixedRegFixupLevel, LiveRangeKey,
+    LiveRangeListEntry, u64_key,
 };
 use crate::ion::reg_traversal::RegTraversalIter;
 use crate::moves::{MoveAndScratchResolver, ParallelMoves};
@@ -31,7 +31,7 @@ use crate::{
 use alloc::format;
 use alloc::vec::Vec;
 use hashbrown::hash_map::Entry;
-use smallvec::{smallvec, SmallVec};
+use smallvec::{SmallVec, smallvec};
 
 impl<'a, F: Function> Env<'a, F> {
     pub fn is_start_of_block(&self, pos: ProgPoint) -> bool {
@@ -296,10 +296,7 @@ impl<'a, F: Function> Env<'a, F> {
                 let range = entry.range;
                 trace!(
                     "apply_allocations: vreg {:?} LR {:?} with range {:?} has alloc {:?}",
-                    vreg,
-                    entry.index,
-                    range,
-                    alloc,
+                    vreg, entry.index, range, alloc,
                 );
                 debug_assert!(alloc != Allocation::none());
 
@@ -634,10 +631,7 @@ impl<'a, F: Function> Env<'a, F> {
 
                     trace!(
                         " -> moving from {} to {} between {:?} and {:?}",
-                        src,
-                        dest.alloc,
-                        dest.from,
-                        dest.to
+                        src, dest.alloc, dest.from, dest.to
                     );
 
                     let (pos, prio) = choose_move_location(self, dest.from, dest.to);
@@ -740,11 +734,7 @@ impl<'a, F: Function> Env<'a, F> {
                     let output_alloc = self.get_alloc(inst, output_idx);
                     trace!(
                         "reuse-input inst {:?}: output {} has alloc {:?}, input {} has alloc {:?}",
-                        inst,
-                        output_idx,
-                        output_alloc,
-                        input_idx,
-                        input_alloc
+                        inst, output_idx, output_alloc, input_idx, input_alloc
                     );
                     if input_alloc != output_alloc {
                         #[cfg(debug_assertions)]
@@ -883,8 +873,7 @@ impl<'a, F: Function> Env<'a, F> {
                 let mut parallel_moves = ParallelMoves::new();
                 trace!(
                     "parallel moves at pos {:?} prio {:?}",
-                    pos_prio.pos,
-                    pos_prio.prio
+                    pos_prio.pos, pos_prio.prio
                 );
                 for m in moves {
                     trace!(" {} -> {}", m.from_alloc, m.to_alloc);

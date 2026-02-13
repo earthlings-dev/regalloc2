@@ -106,7 +106,7 @@ use core::default::Default;
 use core::hash::Hash;
 use core::ops::Range;
 use core::result::Result;
-use smallvec::{smallvec, SmallVec};
+use smallvec::{SmallVec, smallvec};
 
 /// A set of errors detected by the regalloc checker.
 #[derive(Clone, Debug)]
@@ -236,7 +236,9 @@ impl CheckerValue {
     fn remove_vreg(&mut self, reg: VReg) {
         match self {
             CheckerValue::Universe => {
-                panic!("Cannot remove VReg from Universe set (we do not have the full list of vregs available");
+                panic!(
+                    "Cannot remove VReg from Universe set (we do not have the full list of vregs available"
+                );
             }
             CheckerValue::VRegs(vregs) => {
                 vregs.remove(&reg);
@@ -508,10 +510,7 @@ impl CheckerState {
                     let val = self.get_value(alloc).unwrap_or(&default_val);
                     trace!(
                         "checker: checkinst {:?}: op {:?}, alloc {:?}, checker value {:?}",
-                        checkinst,
-                        op,
-                        alloc,
-                        val
+                        checkinst, op, alloc, val
                     );
                     self.check_val(inst, *op, *alloc, val, allocs, checker)?;
                 }
@@ -553,10 +552,7 @@ impl CheckerState {
                 if let Some(val) = self.get_value(&from).cloned() {
                     trace!(
                         "checker: checkinst {:?} updating: move {:?} -> {:?} val {:?}",
-                        checkinst,
-                        from,
-                        into,
-                        val
+                        checkinst, from, into, val
                     );
                     self.set_value(into, val);
                 }
@@ -873,9 +869,7 @@ impl<'a, F: Function> Checker<'a, F> {
                     new_state.update(edge_inst);
                     trace!(
                         "analyze: succ {:?}: inst {:?} -> state {:?}",
-                        succ,
-                        edge_inst,
-                        new_state
+                        succ, edge_inst, new_state
                     );
                 }
 

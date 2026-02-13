@@ -26,7 +26,7 @@ use crate::{
 };
 use core::convert::TryFrom;
 use core::usize;
-use smallvec::{smallvec, SmallVec};
+use smallvec::{SmallVec, smallvec};
 
 /// A spill weight computed for a certain Use.
 #[derive(Clone, Copy, Debug)]
@@ -226,9 +226,7 @@ impl<'a, F: Function> Env<'a, F> {
 
         trace!(
             "insert use {:?} into lr {:?} with weight {:?}",
-            u,
-            into,
-            weight,
+            u, into, weight,
         );
 
         // N.B.: we do *not* update `requirement` on the range,
@@ -461,9 +459,11 @@ impl<'a, F: Function> Env<'a, F> {
                 let mut reused_input = None;
                 for op in self.func.inst_operands(inst) {
                     if let OperandConstraint::Reuse(i) = op.constraint() {
-                        debug_assert!(self.func.inst_operands(inst)[i]
-                            .as_fixed_nonallocatable()
-                            .is_none());
+                        debug_assert!(
+                            self.func.inst_operands(inst)[i]
+                                .as_fixed_nonallocatable()
+                                .is_none()
+                        );
                         reused_input = Some(self.func.inst_operands(inst)[i].vreg());
                         break;
                     }
@@ -532,8 +532,7 @@ impl<'a, F: Function> Env<'a, F> {
                                             "is downward live, and there is also a ",
                                             "def or clobber at this preg"
                                         ),
-                                        operand,
-                                        preg
+                                        operand, preg
                                     );
                                     let pos = ProgPoint::before(inst);
                                     self.multi_fixed_reg_fixups.push(MultiFixedRegFixup {
@@ -863,9 +862,7 @@ impl<'a, F: Function> Env<'a, F> {
                             let preg_idx = PRegIndex::new(preg.index());
                             trace!(
                                 "at pos {:?}, vreg {:?} has fixed constraint to preg {:?}",
-                                u.pos,
-                                vreg_idx,
-                                preg_idx
+                                u.pos, vreg_idx, preg_idx
                             );
 
                             // FixedStack is incompatible if there are any
